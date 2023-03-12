@@ -1,38 +1,155 @@
-.App {
-  text-align: center;
-}
+.box {
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: deepskyblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+  opacity: 0;
+  animation: ani 0.5s both;
+
 }
 
-.App-link {
-  color: #61dafb;
+.boxCrypt {
+  flex-direction: column;
+  position: fixed;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: bisque;
+  display: flex;
+
+  border-radius: 5%;
+  width: 70%;
+  height: 60%;
+  text-align: center;
+  color: rgb(88, 105, 111);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+  opacity: 0;
+  animation: ani 0.5s both;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.inputCode {
+  position: fixed;
+  width: 15%;
+  height: 30%;
+  border: 1px solid #999;
+  font-size: 16px;
+  font-family: Tahoma;
+}
+
+.leftCryptBox {
+  flex-direction: column;
+  margin-top: 10%;
+  margin-left: 5%;
+  width: 30%;
+  float: left;
+  display: flex;
+}
+
+.shower {
+  float: left;
+  border-radius: 10%;
+  color: black;
+  background-color: rgb(193, 188, 188);
+  width: 150px;
+  height: 50px;
+  display: flex;
+
+}
+
+.leters {
+
+  margin-top: 6%;
+  float: left;
+  position: fixed;
+  font-size: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  color: black;
+  height: 150px;
+  width: 12%;
+
+  overflow-x: scroll;
+
+
+
+}
+
+.middleCryptBox {
+  margin-top: 5%;
+  width: 30%;
+  display: block;
+  float: left;
+}
+
+.rightCryptBox {
+  margin-left: 45%;
+  margin-top: 10%;
+  margin-right: 15%;
+  width: 30%;
+
+
+}
+
+.boxDecrypt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: deepskyblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+
+}
+
+@keyframes ani {
+  0% {
+    opacity: 0;
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    opacity: 1;
   }
+}
+
+
+
+.texter {
+
+  background-color: rgb(255, 255, 255);
+}
+
+/* стилі для декриптора */
+
+.decryptBox {
+  color: rgb(88, 105, 111);
+  position: fixed;
+  border-radius: 5%;
+  width: 70%;
+  height: 60%;
+  background-color: bisque;
+  display: flex;
+  justify-content: space-around;
+  opacity: 0;
+  animation: ani 0.5s both;
+}
+
+.leftDecryptBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.decryptTextfield {
+  background-color: rgb(255, 255, 255);
+}
+
+.rightdecryptBox {
+  margin-top: 5%;
+  display: flex;
+  height: 70%;
+  width: 30%;
 }
