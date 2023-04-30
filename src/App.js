@@ -4,6 +4,7 @@ import Cryptor from "./cryptor";
 import Decryptor from "./decryptor";
 import RcMethod from "./RcMethod";
 import './App.css';
+import QuantumRandomNumberGenerator from "./components/randomNumGenerator";
 const App = () => {
     const [whatToDo, setWhatToDo] = useState(6)
 

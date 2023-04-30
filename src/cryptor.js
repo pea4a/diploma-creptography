@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
-import { Box, Button, MenuItem, Radio, Select, Slider, TextField, Typography } from '@mui/material';
+import { Box, Button, MenuItem, Modal, Radio, Select, Slider, TextField, Typography } from '@mui/material';
+import QuantumRandomNumberGenerator from './components/randomNumGenerator';
 
 const Cryptor = () => {
     const [showLaters, setShowLeters] = useState(false)
     const [isGen, setIsGen] = useState(false)
     const [text, setText] = useState('')
-    const [randomKey, setrandomKey] = useState(Math.random)
+    const [randomKey, setrandomKey] = useState()
     const [alphabeting, setAlphabet] = useState([])
     const [mixed, setMixed] = useState([])
     const [finalMessage, setFinalMessage] = useState([])
 
-
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
 
     ///////////
     /// genLetters - створює алфавіт з значеннями на які впливає випадкове число randomKey
     const genLetters = () => {
         setIsGen(true)
-        const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ _,.абвгґдеєжзиіїйклмнопрстуфхцчшщьюяАБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ';
+        const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ _,.абвгґдеєжзиіїйклмнопрстуфхцчшщьюяАБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ1234567890';
 
         const alphabetObjects = alphabet.split('').map((letter, index) => {
             return { letter, number: (index + 1) * 0.01 * randomKey };
@@ -112,39 +115,37 @@ const Cryptor = () => {
         <Box>
 
             <Box className='leftCryptBox'>
-                <Box className='shower'>
-                    <Radio checked={showLaters} onClick={() => setShowLeters(!showLaters)} />
-                    <Typography>показати словник</Typography>
-                    <br />
+                <div>
+                    <Button variant='contained' onClick={handleOpen}>Створити випадкове число</Button>
+                    <Button disabled={isGen} variant='contained' onClick={genLetters}>Створити словник шифруваня</Button>
+                    <Button variant='contained' onClick={cryptor}>зашифрувати текст</Button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box className='modalStyle' >
+                            <QuantumRandomNumberGenerator />
+                        </Box>
+                    </Modal>
+                </div>
 
-                </Box>
-                <Box className='leters'>
-
-                    {showLaters ? alphabeting.map((elem, index) => {
-                        return <p key={index}>{elem.letter}={elem.number}</p>
-
-
-                    }) : ''}
-
-                </Box>
             </Box>
 
             <Box className='middleCryptBox'>
+                <Typography>Введіть ваше повідомлення:</Typography>
                 <TextField className='texter' onChange={event => setText(event.target.value)} />
                 <br />
                 <Typography><i>Ваш секретний ключ:</i></Typography>
 
-                <input value={randomKey} />
+                <input onChange={event => setrandomKey(Number(event.target.value))} />
                 <br />
-                <Button disabled={isGen} variant='contained' onClick={genLetters}>Створити словник шифруваня</Button>
-                <br />
-                <Button variant='contained' onClick={cryptor}>зашифрувати</Button>
+
 
             </Box>
             <Box className='rightCryptBox'>
-                <textarea className='inputCode' value={mixed.map((elem) => { return (elem) })
-                    // mixed.map((elem, index) => { return elem.value + '-' + elem.state + '-' })
-                } />
+                <textarea style={{ width: '100%', height: '100%' }} value={mixed.map((elem) => { return (elem) })} />
                 <br />
             </Box>
 
