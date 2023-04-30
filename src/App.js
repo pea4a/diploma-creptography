@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { Box, Button, InputLabel, MenuItem, Select, Slider, TextField, Typography } from '@mui/material';
+import { Box, Button, ButtonGroup, InputLabel, MenuItem, Select, Slider, TextField, Typography } from '@mui/material';
 import Cryptor from "./cryptor";
 import Decryptor from "./decryptor";
-import RcMethod from "./RcMethod";
 import './App.css';
-import QuantumRandomNumberGenerator from "./components/randomNumGenerator";
 const App = () => {
     const [whatToDo, setWhatToDo] = useState(6)
 
@@ -12,14 +10,42 @@ const App = () => {
     return (
 
         <Box >
-            <Box className="box">
+            <Box
+
+                className="box">
                 <p >Що будемо робити?</p>
                 <br />
-                <Select onChange={event => setWhatToDo(event.target.value)}>
+                <ButtonGroup
+                    disableElevation
+                    variant="none"
+                    size="large"
+                    aria-label="large button group"
+                >
+                    <Button
+                        variant="contained"
+                        sx={{
+                            backgroundColor: 'green',
+                            '&:hover': {
+                                backgroundColor: 'darkgreen',
+                            },
+                        }}
+                        onClick={event => setWhatToDo(1)}>Зашифрувати</Button>
+                    <Button
+                        variant="contained"
+                        sx={{
+                            height: '50px',
+                            backgroundColor: 'green',
+                            '&:hover': {
+                                backgroundColor: 'darkgreen',
+                            },
+                        }}
+                        onClick={event => setWhatToDo(2)}>Дешифрувати</Button>
+                </ButtonGroup>
+                {/* <Select onChange={event => setWhatToDo(event.target.value)}>
                     <MenuItem value={1}>Зашифрувати</MenuItem>
 
                     <MenuItem value={2}>Дешифрувати</MenuItem>
-                </Select>
+                </Select> */}
 
             </Box>
             {

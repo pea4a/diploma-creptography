@@ -1,9 +1,9 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import React, { useState } from "react";
 import CryptoJS from "crypto-js";
 
 function QuantumRandomNumberGenerator() {
-    const [number, setNumber] = useState("0.0000000000000000");
+    const [number, setNumber] = useState("0.00000000000000000000");
     const [seed, setSeed] = useState("");
     const [seed1, setSeed1] = useState("");
     const [seed2, setSeed2] = useState("");
@@ -28,8 +28,8 @@ function QuantumRandomNumberGenerator() {
 
         let seed = seed1 + signature + seed2 + salt;
         let hash = CryptoJS.SHA512(seed).toString();
-        let num = parseInt(hash.slice(0, 16), 16) / parseInt("ffffffffffffffff", 16);
-        let formattedNum = num.toFixed(16);
+        let num = parseInt(hash.slice(0, 20), 16) / parseInt("ffffffffffffffffffff", 16);
+        let formattedNum = num.toFixed(20);
 
         setNumber(formattedNum);
     };
@@ -71,8 +71,26 @@ function QuantumRandomNumberGenerator() {
             <Typography htmlFor="signature">Підпис:</Typography>
             <input type="text" id="signature" value={signature} onChange={handleSignatureChange} />
             <br />
-            <button onClick={combineSeeds}>комбінувати сід</button>
-            <button onClick={splitSeeds}>роз'єднати сід</button>
+            <Button
+                variant="contained"
+                sx={{
+                    backgroundColor: 'green',
+                    '&:hover': {
+                        backgroundColor: 'darkgreen',
+                    },
+                }}
+                variant='contained'
+                onClick={combineSeeds}>комбінувати сід</Button>
+            <Button
+                variant="contained"
+                sx={{
+                    backgroundColor: 'green',
+                    '&:hover': {
+                        backgroundColor: 'darkgreen',
+                    },
+                }}
+                variant='contained'
+                onClick={splitSeeds}>роз'єднати сід</Button>
             <br />
             <Typography htmlFor="seed1">сід 1:</Typography>
             <input type="text" id="seed1" value={seed1} onChange={handleSeed1Change} />
@@ -80,7 +98,16 @@ function QuantumRandomNumberGenerator() {
             <Typography htmlFor="seed2">сід 2:</Typography>
             <input type="text" id="seed2" value={seed2} onChange={handleSeed2Change} />
             <br />
-            <button onClick={generateNumber}>згенерувати число</button>
+            <Button
+                variant="contained"
+                sx={{
+                    backgroundColor: 'green',
+                    '&:hover': {
+                        backgroundColor: 'darkgreen',
+                    },
+                }}
+                variant='contained'
+                onClick={generateNumber}>згенерувати число</Button>
             <br />
             <Typography htmlFor="number">Ваше випадкове число:</Typography>
             <input type="text" id="number" value={number} readOnly />

@@ -17,7 +17,7 @@ const Decryptor = () => {
 
     const handGenLetters = () => {
         setIsGen(true)
-        const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ _,.абвгґдеєжзиіїйклмнопрстуфхцчшщьюяАБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ';
+        const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ -_,.абвгґдеєжзиіїйклмнопрстуфхцчшщьюяАБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ1234567890';
 
         const alphabetObjects = alphabet.split('').map((letter, index) => {
             return { letter, number: (index + 1) * 0.01 * handKey };
@@ -63,8 +63,24 @@ const Decryptor = () => {
                 <Typography>введіть ключ</Typography>
                 <textarea className='decryptTextfield' onChange={event => setHandKey(event.target.value)} />
 
-                <Button variant='contained' disabled={isGen} onClick={handGenLetters}>згенерувати алфавіт</Button>
-                <Button variant='contained' onClick={handDecrypt}>дешифрувати</Button>
+                <Button
+                    variant="contained"
+                    sx={{
+                        backgroundColor: 'green',
+                        '&:hover': {
+                            backgroundColor: 'darkgreen',
+                        },
+                    }}
+                    variant='contained' disabled={isGen} onClick={handGenLetters}>згенерувати алфавіт</Button>
+                <Button
+                    variant="contained"
+                    sx={{
+                        backgroundColor: 'green',
+                        '&:hover': {
+                            backgroundColor: 'darkgreen',
+                        },
+                    }}
+                    variant='contained' onClick={handDecrypt}>дешифрувати</Button>
             </Box>
 
             <textarea value={finalMessage} className='rightdecryptBox' />
