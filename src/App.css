@@ -1,10 +1,10 @@
 .box {
 
-
+  background-color: rgb(22, 45, 14);
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: deepskyblue;
+  color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-size: xx-large;
   opacity: 0;
@@ -17,14 +17,12 @@
   position: fixed;
   margin-left: 15%;
   margin-right: 15%;
-  background-color: bisque;
+  background-color: rgb(22, 31, 18);
   display: flex;
-
-  border-radius: 5%;
   width: 70%;
   height: 60%;
   text-align: center;
-  color: rgb(88, 105, 111);
+  color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-size: xx-large;
   opacity: 0;
@@ -32,18 +30,36 @@
 
 }
 
+.modalStyle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400;
+  background-color: rgb(22, 45, 14);
+  border: 2px solid #000;
+  box-shadow: 24;
+  padding: 20px;
+  color: white
+}
+
+;
+
 .inputCode {
-  position: fixed;
-  width: 15%;
-  height: 30%;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
   border: 1px solid #999;
   font-size: 16px;
   font-family: Tahoma;
+  resize: none;
+  /* Для отключения возможности изменения размера textarea пользователем */
 }
+
 
 .leftCryptBox {
   flex-direction: column;
-  margin-top: 10%;
+  margin-top: 12%;
   margin-left: 5%;
   width: 30%;
   float: left;
@@ -80,20 +96,21 @@
 }
 
 .middleCryptBox {
-  margin-top: 5%;
+  margin-top: 10%;
   width: 30%;
   display: block;
   float: left;
 }
 
 .rightCryptBox {
-  margin-left: 45%;
+  margin-left: 65%;
   margin-top: 10%;
   margin-right: 15%;
   width: 30%;
-
-
+  height: 100%;
+  /* добавить эту строку */
 }
+
 
 .boxDecrypt {
   display: flex;
@@ -125,12 +142,12 @@
 /* стилі для декриптора */
 
 .decryptBox {
-  color: rgb(88, 105, 111);
+  text-emphasis-color: ;
+  color: rgb(255, 255, 255);
   position: fixed;
-  border-radius: 5%;
   width: 70%;
   height: 60%;
-  background-color: bisque;
+  background-color: rgb(22, 31, 18);
   display: flex;
   justify-content: space-around;
   opacity: 0;
